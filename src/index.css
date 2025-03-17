@@ -1,0 +1,30 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  font-family: "Bitter", serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  color:#1a1a1a;
+}
+
+.message-container {
+  line-height: 1.5;
+  color:#4d4d4d;
+}
+.message-container ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.message-container pre {
+  font-size: 14px;
+  background-color: #e0e1e2;
+  padding: 1rem;
+  border-radius: .5rem;
+}
