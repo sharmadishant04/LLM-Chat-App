@@ -12,11 +12,11 @@ const InputArea = ({
 }) => {
   const textareaRef = useRef(null);
 
-  // Remove the Enter key handling for sending messages
   const handleKeyDown = (e) => {
-    // Allow Enter key to insert a new line
+    // Allow Enter key to send the message
     if (e.key === 'Enter' && !e.shiftKey) {
-      // No need to prevent default behavior
+      e.preventDefault(); // Prevent new line
+      handleSendMessage();
     }
   };
 
@@ -49,7 +49,7 @@ const InputArea = ({
         />
       </div>
       <div className="min-w-8 relative">
-        <button
+        <button 
           onClick={handleSendMessage}
           className={`w-10 h-10 absolute bottom-0 right-1 flex items-center justify-center rounded-full transition duration-200 ${
             content || isLoading ? 'bg-black text-white' : 'bg-gray-200 text-black'
@@ -57,6 +57,7 @@ const InputArea = ({
           disabled={isLoading} // Disable button when loading
         >
           {isLoading ? <FontAwesomeIcon icon={faStopCircle} /> : <FontAwesomeIcon icon={faPaperPlane} />}
+          {isLoading && <span className="loading-text">Sending...</span>}
         </button>
       </div>
     </div>

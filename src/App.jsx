@@ -5,7 +5,6 @@ import NewChatButton from './components/NewChatButton';
 import InputArea from './components/InputArea';
 import axios from 'axios';
 
-
 const App = () => {
   const [messages, setMessages] = useState([
     {
@@ -69,25 +68,24 @@ const App = () => {
         timestamp: new Date().toISOString(),
       },
     ]);
-    
   };
 
   return (
     <div className="flex flex-col h-screen bg-white">
       {/* Header */}
-      <header className="flex justify-between items-center p-6 shadow">
+      <header className="flex justify-between items-center p-6 shadow bg-gray-800 text-white">
         <h1 className="text-2xl font-bold ">LLM ChatApp</h1>
         <img src="/logo.svg" alt="Logo" className="h-12 w-12" />
         <h2 className="text-xl font-bold ">llama3.2</h2>
       </header>
 
       {/* Chat Window */}
-      <ChatWindow messages={messages} />
+      <ChatWindow messages={messages} isLoading={isLoading} />
 
       {/* Input Area */}
-      <div className="p-4 flex w-full gap-2">
+      <div className="p-4 flex w-full gap-2 relative">
         <NewChatButton onNewChat={handleNewChat} />
-        <InputArea
+        <InputArea 
           content={content}
           setContent={setContent}
           handleSend={handleSend}
@@ -96,7 +94,7 @@ const App = () => {
       </div>
 
       {/* Footer */}
-      <footer className="flex justify-center items-center p-4 bg-black text-white">
+      <footer className="flex justify-center items-center p-4 bg-gray-800 text-white">
        Created by a human (probably) - Dishant@2025
       </footer>
     </div>
